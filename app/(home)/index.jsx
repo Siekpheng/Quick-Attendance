@@ -129,6 +129,7 @@ const index = () => {
               </Pressable>
 
               <Pressable
+                onPress={() => router.push("/(home)/absentrequest")}
                 style={{
                   backgroundColor: "white",
                   padding: 30,
