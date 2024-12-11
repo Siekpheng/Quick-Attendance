@@ -58,7 +58,7 @@ export default function RegisterAttendance() {
             const extractedData = data.data; // Assuming 'data' is the object passed to this function
             const currentTime = new Date().toLocaleTimeString();
             console.log(`IP Address: ${ipAddress}`);
-            if (extractedData === "Hello Rita"&& ipAddress === "192.168.0.105") {
+            if (extractedData === "rob2024") {
                 setScanResult(`Your attendance has been recorded.`);
                 setTime(currentTime);
                 setStatusResult(true);
@@ -104,12 +104,14 @@ export default function RegisterAttendance() {
                 </View>
                 <Text style={styles.resultTime}>{scanTime}</Text>
                 <TouchableOpacity 
-                    onPress={() => router.push("/(home)")} 
-                    style={styles.homeButton}
+                    onPress={() => {
+                        setScanningEnabled(true);
+                        setScanResult(null);
+                        setStatusResult(null);
+                    }} 
+                    style={styles.scanAgainButton}
                 >
-                    <View style={styles.homeIconContainer}>
-                        <Icon name="home" size={70} color="white" />
-                    </View>
+                    <Text style={styles.scanAgainButtonText}>Scan Again</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -200,6 +202,28 @@ const styles = StyleSheet.create({
         borderRadius: 60,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    scanAgainIconContainer: {
+        backgroundColor: '#3399fe', // Circle background color
+        width: 110, // Width of the circle
+        height: 110, // Height of the circle
+        borderRadius: 55, // Half of width/height for a circle
+        justifyContent: 'center', // Center vertically
+        alignItems: 'center', // Center horizontally
+        marginBottom: 20, // Space below the circle
+    },
+    scanAgainButton: {
+        backgroundColor: '#3399fe',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 10,
+    },
+    scanAgainButtonText: {
+        color: 'white',
+        fontSize: 25,
+        fontWeight: 'bold',
     },
 });
 
